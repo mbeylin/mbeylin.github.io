@@ -193,7 +193,7 @@
                         }
                         b = "";
                         G ? (t && (E(a[d]), w && E(k[d])), w && (b +=
-                                '<div class="user">' + p(k[d].innerHTML) +
+                                '<div class="user">' +
                                 "</div>"), b += '<p class="tweet">' +
                             p(a[d].innerHTML) + "</p>", y && (b = J ?
                                 b + (
