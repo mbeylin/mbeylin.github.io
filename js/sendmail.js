@@ -23,11 +23,9 @@
 				$.ajax({
 					url: 'send.php',
 					type: 'post',
-					data: {email: $('#mi-email').val(), 'comment':$('#mi-comment').val()},
+					data: {email: $('#mi-email').val()},
 					success: function(result) {
 						console.log(result);
-						$('#more-info-modal').modal('hide');
-						$('#thanks-modal').modal('show');
 						$('#mi-email').val('');
 						$('#mi-comment').val('');
 						$('#send-email').button('reset');

@@ -1,7 +1,6 @@
 <?php
 
 $email = isset($_POST['email']) ? $_POST['email'] : null;
-$comment = isset($_POST['comment']) ? $_POST['comment']: null;
 
 if (!trim($email) || !preg_match('/@/', $email))
 {
@@ -9,13 +8,14 @@ if (!trim($email) || !preg_match('/@/', $email))
 	header('X-PHP-Response-Code: 400', true, 400);
 	die(json_encode(array('error' => 'Please provide a valid email address.')));
 }
-
+$case = 'Audit';
+$comment = ' ';
 
 $ref = curl_init('https://permarec.wufoo.com/api/v3/forms/email-newsletter/entries.json'); 
 curl_setopt($ref, CURLOPT_HTTPHEADER, array('Content-type: multipart/form-data'));
 curl_setopt($ref, CURLOPT_POST, true);
 curl_setopt($ref, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ref, CURLOPT_POSTFIELDS, array('Field1' => $email, 'Field6' => $comment));     
+curl_setopt($ref, CURLOPT_POSTFIELDS, array('Field1' => $email, 'Field3' => $case, 'Field6' => $comment));     
 curl_setopt($ref, CURLOPT_USERPWD, 'WAFM-5TE0-B0L7-12QU:X');
 curl_setopt($ref, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
 curl_setopt($ref, CURLOPT_SSL_VERIFYPEER, false);
@@ -25,10 +25,10 @@ curl_setopt($ref, CURLOPT_FOLLOWLOCATION, true);
 
 $response = curl_exec($ref);
 $responseStatus = curl_getinfo($ref);
+
 if ($responseStatus['http_code'] == 201)
 {
 	echo json_encode(array('error' => 'Sent'));
-
 }
 else
 {
@@ -37,5 +37,8 @@ else
 	header('X-PHP-Response-Code: 500', true, 500);
 	echo json_encode(array('error' => 'Internal server error' . var_dump($responseStatus)));
 }
+
+
+
 
 ?>

@@ -81,29 +81,43 @@
 <section class="press">
         <div class="container press-inside">
             <h1 class="center"> Press </h1>
-            
-            <h3 class="left"> Releases </h3>
+            <!--
+            <h3 class="leftt"> Releases </h3>
             <p class="lead col-xs-offset-2"> Rubix launches Rubix Core, the beta version of the Rubix blockchain platform </br></br>
                 Rubix moves from DMS to TS&amp;A </br> </br>
                 Rubix hires interns for the Winter 2016 Term</p>
-            <hr class="divider">
-            <h3 class="left"> In the News </h3>
+            <hr class="divider">-->
+            <h3 class="leftt"> In the News </h3>
             <p class="lead col-xs-offset-2">
-                Bitcoin is Only The Beginning For Blockchain Technology </br></br>
-                Deloitte is delving into Ethereum, Eris and Ripple </br></br>
-                Deloitte, Libra, Accenture: The work of auditors in the age of Bitcoin 2.0 technology </br></br>
-                Deloitte cuts a bold figure at Ethereum ÐΞVCON1</br></br>
-                Deloitte's Rubix is Approaching Blockchain Tech </br></br>
-               Deloitte Explores Blockchain Tech for Client Auditing </br></br>
+                <a href="http://letstalkpayments.com/3-companies-leading-the-blockchain-as-a-service-baas-revolution/?utm_source=twitter&utm_medium=twitter&utm_campaign=twitter" target="_blank"> 3 Companies Leading the Blockchain as a Service Revolution </a><br><br>
+                <a href="http://www.forbes.com/sites/mikemontgomery/2015/09/15/bitcoin-is-only-the-beginning-for-blockchain-technology/#48433c516f04" target="_blank">Bitcoin is Only The Beginning For Blockchain Technology </a><br><br>
+                <a href="http://www.ibtimes.co.uk/deloitte-delving-into-ethereum-eris-ripple-1515494" target="_blank">Deloitte is delving into Ethereum, Eris and Ripple </a><br><br>
+                <a href="http://www.ibtimes.co.uk/deloitte-libra-accenture-work-auditors-age-bitcoin-2-0-technology-1515932" target="_blank">Deloitte, Libra, Accenture: The work of auditors in the age of Bitcoin 2.0 technology </a><br><br>
+                <a href="http://www.ibtimes.co.uk/devcon1-ethereum-deloitte-eye-global-accountancy-blockchains-1528511" target="_blank">Deloitte cuts a bold figure at Ethereum ÐΞVCON1</a><br><br>
+                <a href="http://www.coindesk.com/how-deloitte-rubix-blockchain-tech/" target="_blank">Deloitte's Rubix is Approaching Blockchain Tech </a><br><br>
+               <a href="http://www.coindesk.com/deloitte-blockchain-auditing-consulting/" target="_blank">Deloitte Explores Blockchain Tech for Client Auditing </a><br><br>
                 </p>
-            <hr class="divider">
-            <h3 class="left"> Assets </h3>
+            <h3 class="leftt"> Assets </h3>
             <p class="lead col-xs-offset-2">
-                Download Logo Assets
-            </br></br>
-                Download General Team Assets
-            </p>
+                <a href="assets.zip" target="_blank">Brand & Logo Assets</a>
             
+            </p>
+            <h3 class="leftt"> Videos </h3>
+            <div class="col-xs-offset-2 col-xs-8">
+                <div class="col-sm-6 col-xs-12" align="center">
+                        <h3>Rubix at Ethereum ÐΞVCON1, London</h3>
+                        <div class="embed-responsive embed-responsive-4by3">
+                            <iframe src="https://drive.google.com/file/d/0B9nStX06WlxCREEwZ0lPZjVNNlU/preview"></iframe>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12" align="center">
+                        <h3>Rubix at Digital Economy, Omaha</h3>
+                        <div class="embed-responsive embed-responsive-4by3">
+                            <iframe src="https://drive.google.com/file/d/0B9nStX06WlxCTnZkU3ZraFA1UEU/preview"></iframe>
+                        </div>
+                    </div>
+            </div>
+             
         </div>
     
        
@@ -122,7 +136,7 @@
                         <div style="margin-left: calc(50% - 40px);">
                             <ul>
                                 <li><a href="press.html"><i class="fa fa-newspaper-o fa-lg"></i> Press </a></li>
-                                 <li><a href="developer.html"><i class="fa fa-code fa-lg"></i> Developers </a></li>
+                                 <!--<li><a href="developer.html"><i class="fa fa-code fa-lg"></i> Developers </a></li>-->
                                 <li><a href="legal.html"><i class="fa fa-gavel fa-lg"></i> Legal </a></li>
                             </ul>
                         </div> 
@@ -154,49 +168,10 @@
 
     <!-- jQuery Version 1.11.1 -->
     <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
+    <script src="js/konami.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script>
-
-        $(function(){
-            
-            // email modal
-            $('#send-email').click(function(e) {
-                console.log("clicked");
-                e.preventDefault();
-                $('#error-text').hide();
-
-                if ($('#beta-email').val().trim() == "" || !/@/.test($('#beta-email').val()))
-                {
-                    $('#error-text').css('display', 'block');
-                    return;
-                }
-                console.log("checked email");
-                $('#send-email').button('loading');
-
-                $.ajax({
-                    url: 'send.php',
-                    type: 'post',
-                    data: {'email': $('#beta-email').val()},
-                    success: function(result) {
-                        $('#more-info-modal').modal('hide');
-                        $('#beta-email-success').modal('show');
-                        $('#beta-email').val('');
-                        $('#send-email').button('reset');
-                    },
-                    error: function(xhr) {
-                        var error = JSON.parse(xhr.responseText);
-
-                        var errorString = typeof(error.error) != "undefined" ? error.error : "Sorry, there was an error. Please try again later.";
-
-                        alert(errorString);
-                        $('#send-email').button('reset');
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="js/sendmail.js"></script>
+    <script src="js/tweets.js"></script>
 </body>
 
 </html>
