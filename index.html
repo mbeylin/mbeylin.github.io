@@ -166,8 +166,8 @@
                     <div class="form-inline" id="beta-email"  aria-labelledby="beta-email">
                         <div class="form-group">
                             <label for="beta-email" class="sr-only">Email</label>
-                            <input type="email" id="beta-email" placeholder="Email" class="form-control email-box">
-                            <span class="help-block error-text">Please enter an email address</span>
+                            <input type="email" id="mi-email" placeholder="Email" class="form-control email-box">
+                            <span class="help-block error-text" id="error">Please enter an email address</span>
                         </div>           
                     </div>
                     <div class="send-button">
@@ -308,21 +308,21 @@ Managing Partner, AdelphaTech Software Inc</p>
                 <div class="enhancement-holder">
                     <img class="animated flipInX" src="img/performance.svg" style="width: 40%; display: block; margin: 0 auto;" alt="performance time clock execution">
                     <h3>Enterprise Performance</h3>
-                    <p class="lead blurb-xs">Rubix offers unparalleled transaction performance and data capacity equipped to handle demanding enterprise requirements</p>
+                    <p class="lead blurb-sm">Rubix offers unparalleled transaction performance and data capacity equipped to handle demanding enterprise requirements</p>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-4">
                 <div class="enhancement-holder">
                     <img  class="animated flipInX" src="img/integrate.svg" style="width: 40%; display: block; margin: 0 auto;" alt="integration plug in">
                     <h3>Enterprise Integration</h3>
-                    <p class="lead blurb-xs">Rubix is designed and built to be easily integrated with a wide array of legacy systems used in enterprise environments</p>
+                    <p class="lead blurb-sm">Rubix is designed and built to be easily integrated with a wide array of legacy systems used in enterprise environments</p>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-4">
                 <div class="enhancement-holder">
                     <img class="animated flipInX" src="img/security.svg" style="width: 40%; display: block; margin: 0 auto;" alt="sheild lock secure">
                     <h3>Enterprise Security</h3>
-                    <p class="lead blurb-xs">Rubix is built with security as a core part of the platform and allows you to manage access control and data privacy while adhering to regulatory requirements</p>
+                    <p class="lead blurb-sm">Rubix is built with security as a core part of the platform and allows you to manage access control and data privacy while adhering to regulatory requirements</p>
                 </div>
             </div>
             <div class=" col-xs-12">
@@ -379,44 +379,7 @@ Managing Partner, AdelphaTech Software Inc</p>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/sendmail.js"></script>
     <script src="js/tweets.js"></script>
-    <script>
-
-        $(function(){
-            
-            // email modal
-            $('#send-email').click(function(e) {
-                console.log("clicked");
-                e.preventDefault();
-                $('#error-text').hide();
-
-                if ($('#beta-email').val().trim() == "" || !/@/.test($('#beta-email').val()))
-                {
-                    $('#error-text').css('display', 'block');
-                    return;
-                }
-                console.log("checked email");
-                $('#send-email').button('loading');
-
-                $.ajax({
-                    url: 'send.php',
-                    type: 'post',
-                    data: {'email': $('#beta-email').val()},
-                    success: function(result) {
-                        $('#beta-email').val('');
-                        $('#send-email').button('reset');
-                    },
-                    error: function(xhr) {
-                        var error = JSON.parse(xhr.responseText);
-
-                        var errorString = typeof(error.error) != "undefined" ? error.error : "Sorry, there was an error. Please try again later.";
-
-                        alert(errorString);
-                        $('#send-email').button('reset');
-                    }
-                });
-            });
-        });
-    </script>
+    
         
 
 </body>

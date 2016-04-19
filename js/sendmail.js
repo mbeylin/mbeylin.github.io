@@ -2,14 +2,19 @@
 		function() {
             // email modal
 
-            var easter_egg = new Konami(function() { alert('Konami code!')});
+            var easter_egg = new Konami(function() { 
+            	alert('Konami code!')
+            });
+
+
             $('#send-email').click(function(e) {
+            	console.log($('#mi-email').val());
 				e.preventDefault();
-				$('#more-info-modal span.error-text').hide();
+				$('#error').hide();
 
 				if ($('#mi-email').val().trim() == "" || !/@/.test($('#mi-email').val()))
 				{
-					$('#more-info-modal span.error-text').css('display', 'block');
+					$('#error').css('display', 'block');
 					return;
 				}
 
@@ -18,7 +23,7 @@
 				$.ajax({
 					url: 'send.php',
 					type: 'post',
-					data: {email: $('#mi-email').val(), 'case': $('#mi-case').val(), 'comment':$('#mi-comment').val()},
+					data: {email: $('#mi-email').val(), 'comment':$('#mi-comment').val()},
 					success: function(result) {
 						console.log(result);
 						$('#more-info-modal').modal('hide');
