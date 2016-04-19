@@ -62,9 +62,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a1de', end
 
 }
 .tri-top {
-	width: calc(100vw + 4px);
-	bottom: 0px;
-	left: -4px;
+	width: calc(100vw + 6px);
+	bottom: -1px;
+	left: -6px;
 	position: absolute;
 	z-index: 4;
 }
